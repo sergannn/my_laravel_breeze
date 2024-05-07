@@ -12,7 +12,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 RUN curl -sL https://deb.nodesource.com/setup_current.x nodistro main | bash -
 RUN apt-get install -y nodejs
-RUN composer install --no-dev --working-dir=/app
+#RUN composer install --no-dev --working-dir=/app
 WORKDIR /app
 
 COPY . .
@@ -32,4 +32,5 @@ ENV LOG_CHANNEL stderr
 # Allow composer to run as root
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
+CMD ["/start.sh"]
 #CMD ["bash", "-c", "php artisan env:decrypt && php artisan config:cache && php artisan route:cach && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"]
