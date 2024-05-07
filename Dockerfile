@@ -12,7 +12,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 
 RUN curl -sL https://deb.nodesource.com/setup_current.x nodistro main | bash -
 RUN apt-get install -y nodejs
-
+RUN composer install --no-dev --working-dir=/app
 WORKDIR /app
 
 COPY . .
